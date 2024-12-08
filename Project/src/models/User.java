@@ -39,12 +39,6 @@ public abstract class User {
         return false;
     }
 
-    // Log out the user
-    public void logout() {
-        this.isLogged = false;
-        System.out.println(name + " logged out successfully.");
-    }
-
     // Display user-specific functionality (abstract)
     public abstract void displayFunc();
 
@@ -54,8 +48,6 @@ public abstract class User {
         System.out.println("Password changed successfully.");
     }
     
-    
-
     // Simulate forgetting a password
     public void forgetPassword() {
         System.out.println("Reset link sent to the registered email for " + name);
@@ -87,6 +79,7 @@ public abstract class User {
     }
     
     public String getPassword() {
-        return id;
+        return id; 
     }
 }
+
