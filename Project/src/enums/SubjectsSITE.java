@@ -1,5 +1,14 @@
 package enums;
 
 public enum SubjectsSITE {
-
+    PP1,
+    PP2,
+    DATABASES,
+    OOP,
+    ADS,
+    COMPUTER_ARCHITECTURE,
+    WEB_DEVELOPMENT,
+    COMPUTER_NETWORKS,
+    SOFTWARE_ENGINEERING,
+    MACHINE_LEARNING;
 }
