@@ -14,23 +14,29 @@ public class SystemWSP {
 	//This is welcome page it will be first page which will shown to the user
 	void welcome() {
 		try (Scanner input = new Scanner(System.in)) {
-			System.out.println("Welcome to WSP. Log in/Sing in please!!!\nPlease, choose one of this:\n    1.Log in\n    2.Sign in\n    3.Forget the password");
+			System.out.println("Welcome to WSP. Log in/Sing in please!!!\nPlease, choose one of this:\n    1.Log in\n    2.Sign up\n    3.Forget the password\n    4.Exit");
 			int choice = input.nextInt();
 			
 			if(choice == 1) {
 				logIn();
 			} else if (choice == 2) {
-		        signIn();
+		        signUp();
 		    } else if (choice == 3) {
 		        forgetPassword();
+		    } else if (choice == 4) {
+		        exit();
 		    } else {
 		        System.out.println("Invalid choice. Please restart and select a valid option.");
 		    }
 			
 		} catch (InputMismatchException e) {
-		    System.out.println("Invalid input! Please enter a number (1, 2, or 3).");
+		    System.out.println("Invalid input! Please enter a number (1, 2, 3 or 4).");
 		}
 	}
+	
+
+//-----------------------------------------------------------------------------------------------------------------------
+	
 	
 	//Functions in welcome page
 	//Log in
@@ -89,19 +95,45 @@ public class SystemWSP {
 			
 			
 		} catch (InputMismatchException e) {
-		    System.out.println("Invalid input! Please enter a number (1, 2, or 3).");
+		    System.out.println("Invalid input! Please enter a number (1, 2, 3 or 4).");
 		}
 	}
 	
-	//Sign in
-	void signIn() {
-		У
+	//Sign up
+	void signUp() {
+		System.out.println("Please, fill this form:\n\nChoose who are you?\n    1.Teacher\n    2.Student\n    3.Manager\n    4.Finance Manager\n    5.Admin");
+		try (Scanner input = new Scanner(System.in)) {
+			int role = input.nextInt();
+			
+			//By role choosing type of registration
+			if(role == 1) {
+				System.out.println("Enter your name: ");
+				String name = input.nextLine();
+				System.out.println("Enter your surname: ");
+				String surname = input.nextLine();
+				System.out.println("Enter your surname: ");
+			}
+			
+			
+			
+			
+		} catch (InputMismatchException e) {
+		    System.out.println("Invalid input! Please enter a number (1, 2, 3 or 4).");
+		}
 	}
 	
 	//If forget Password
 	void forgetPassword() {
 		
 	}
+	
+	//Exit 
+	void exit() {
+		
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------
 	
 	
 	//Interfaces 
