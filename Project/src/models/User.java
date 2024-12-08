@@ -53,6 +53,8 @@ public abstract class User {
         this.password = newPassword;
         System.out.println("Password changed successfully.");
     }
+    
+    
 
     // Simulate forgetting a password
     public void forgetPassword() {
@@ -82,5 +84,9 @@ public abstract class User {
 
     public int getYearOfJoining() {
         return yearOfJoining;
+    }
+    
+    public String getPassword() {
+        return id;
     }
 }

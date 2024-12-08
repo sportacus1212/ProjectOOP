@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import DBPakage.Database;
+import models.User;
 
 public class SystemWSP {
 	public SystemWSP() {
@@ -32,6 +33,7 @@ public class SystemWSP {
 	}
 	
 	//Functions in welcome page
+	//Log in
 	void logIn() {
 		try (Scanner input = new Scanner(System.in)) {
 			//Entering user name
@@ -43,14 +45,45 @@ public class SystemWSP {
 			
 			//Checking for correct password and user name
 			List<User> users = Database.getUsers();
+			boolean isAuthenticated = false;
+			
 			for(User user: users) {
 				if(username.equals(user.getLogin())) {
-					if(password.equals(user.getPassword())) {
-						System.out.println("You successfuly entered to your account. Welcome to Main Page " + user.getName() + " " + user.getSurname());
-						if((user.getId().charAt(2)).equals('B')) {
+					int attempts = 0;
+					
+					while (attempts < 3) {
+						if(password.equals(user.getPassword())) {
+							System.out.println("You successfuly entered to your account. Welcome to Main Page " + user.getName() + " " + user.getSurname());
+							isAuthenticated = true;
 							
+							char roleChar = user.getId().charAt(2);
+							switch (roleChar) {
+			                    case 'B': openStudentMainPage(); break;
+			                    case 'T': openTeacherMainPage(); break;
+			                    case 'A': openAdminMainPage(); break;
+			                    case 'M': openManagerMainPage(); break;
+			                    case 'F': openFinanceManagerMainPage(); break;
+			                    default: System.out.println("Unknown role."); break;
+							}
+							break;
+						} else {
+							attempts++; 
+			                if (attempts < 3) {
+			                    System.out.println("Incorrect password. Please try again (" + (3 - attempts) + " attempts left): ");
+			                    password = input.nextLine(); 
+			                }
 						}
 					}
+					
+					if (attempts == 3) {
+			            System.out.println("You have exceeded the maximum number of attempts.");
+			            forgetPassword(); 
+			        }
+			        break;
+				}
+				
+				if (!isAuthenticated) {
+				    System.out.println("Invalid username or password. Please try again.");
 				}
 			}
 			
@@ -60,12 +93,42 @@ public class SystemWSP {
 		}
 	}
 	
+	//Sign in
 	void signIn() {
-		
+		У
 	}
 	
+	//If forget Password
 	void forgetPassword() {
 		
 	}
+	
+	
+	//Interfaces 
+	//For Student
+	void openStudentMainPage() {
+	
+	}
+	
+	//For Teacher
+	void openTeacherMainPage() {
+		
+	}
+	
+	//For Admin
+	void openAdminMainPage() {
+		
+	}
+	
+	//For Manager
+	void openManagerMainPage() {
+		
+	}
+	
+	//For Finance Manager
+	void openFinanceManagerMainPage() {
+		
+	}
+	
 	
 }
