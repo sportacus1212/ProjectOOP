@@ -7,6 +7,9 @@ import DBPakage.Database;
 import models.User;
 
 public class SystemWSP {
+	Database database = new Database(); 
+	
+	
 	public SystemWSP() {
 		
 	}
@@ -50,48 +53,54 @@ public class SystemWSP {
 			String password = input.nextLine();
 			
 			//Checking for correct password and user name
-			List<User> users = Database.getUsers();
+			List<User> users = database.getUsers();
 			boolean isAuthenticated = false;
 			
-			for(User user: users) {
-				if(username.equals(user.getLogin())) {
-					int attempts = 0;
-					
-					while (attempts < 3) {
-						if(password.equals(user.getPassword())) {
-							System.out.println("You successfuly entered to your account. Welcome to Main Page " + user.getName() + " " + user.getSurname());
-							isAuthenticated = true;
-							
-							char roleChar = user.getId().charAt(2);
-							switch (roleChar) {
-			                    case 'B': openStudentMainPage(); break;
-			                    case 'T': openTeacherMainPage(); break;
-			                    case 'A': openAdminMainPage(); break;
-			                    case 'M': openManagerMainPage(); break;
-			                    case 'F': openFinanceManagerMainPage(); break;
-			                    default: System.out.println("Unknown role."); break;
+			if(users.isEmpty()) {
+				for(User user: users) {
+					if(username.equals(user.getLogin())) {
+						int attempts = 0;
+						
+						while (attempts < 3) {
+							if(password.equals(user.getPassword())) {
+								System.out.println("You successfuly entered to your account. Welcome to Main Page " + user.getName() + " " + user.getSurname());
+								isAuthenticated = true;
+								
+								char roleChar = user.getId().charAt(2);
+								switch (roleChar) {
+				                    case 'B': openStudentMainPage(); break;
+				                    case 'T': openTeacherMainPage(); break;
+				                    case 'A': openAdminMainPage(); break;
+				                    case 'M': openManagerMainPage(); break;
+				                    case 'F': openFinanceManagerMainPage(); break;
+				                    default: System.out.println("Unknown role."); break;
+								}
+								break;
+							} else {
+								attempts++; 
+				                if (attempts < 3) {
+				                    System.out.println("Incorrect password. Please try again (" + (3 - attempts) + " attempts left): ");
+				                    password = input.nextLine(); 
+				                }
 							}
-							break;
-						} else {
-							attempts++; 
-			                if (attempts < 3) {
-			                    System.out.println("Incorrect password. Please try again (" + (3 - attempts) + " attempts left): ");
-			                    password = input.nextLine(); 
-			                }
 						}
+						
+						if (attempts == 3) {
+				            System.out.println("You have exceeded the maximum number of attempts.");
+				            forgetPassword(); 
+				        }
+				        break;
 					}
 					
-					if (attempts == 3) {
-			            System.out.println("You have exceeded the maximum number of attempts.");
-			            forgetPassword(); 
-			        }
-			        break;
+					if (!isAuthenticated) {
+					    System.out.println("Invalid username or password. Please try again.");
+					}
 				}
-				
-				if (!isAuthenticated) {
-				    System.out.println("Invalid username or password. Please try again.");
-				}
+			} else {
+				System.out.println("Database is not ready now. Please try again.");
+				exit();
 			}
+			
 			
 			
 		} catch (InputMismatchException e) {
@@ -111,7 +120,12 @@ public class SystemWSP {
 				String name = input.nextLine();
 				System.out.println("Enter your surname: ");
 				String surname = input.nextLine();
-				System.out.println("Enter your surname: ");
+				System.out.println("Choose your school:\n    1.FIT\n    2.KMA\n    3.ISE\n    4.BS\n    5.FGE\n    6.SCE");
+				int shcool = input.nextInt();
+				System.out.println("Choose your status:\n    1.Assistant\n    2.Tutor\n    3.Lector\n    4.Senior Lector\n    5.Professor");
+				int status = input.nextInt();
+				System.out.println("Enter your subject with CAPITAL LETTERS: ");
+				String subject = input.nextLine();
 			}
 			
 			
@@ -120,6 +134,7 @@ public class SystemWSP {
 		} catch (InputMismatchException e) {
 		    System.out.println("Invalid input! Please enter a number (1, 2, 3 or 4).");
 		}
+	}
 		
 	
 	//If forget Password
