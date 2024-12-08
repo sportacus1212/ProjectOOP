@@ -47,32 +47,7 @@ public class Database {
         return courses;
     }
 
-    // Setter for users list (optional if you need to replace the list)
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+  
 
-    // Method to add a new user to the list
-    public boolean addUser(User user) {
-        // You can add validation checks like duplicate username if needed
-        for (User existingUser : users) {
-            if (existingUser.getLogin().equals(user.getLogin())) {
-                System.out.println("Username already exists.");
-                return false;
-            }
-        }
-        users.add(user);  // Add the user to the list
-        return true;
-    }
-
-    // Example method for user login validation
-    public User authenticateUser(String username, String password) {
-        for (User user : users) {
-            if (user.getLogin().equals(username) && user.getPassword().equals(password)) {
-                return user;  // Return the authenticated user
-            }
-        }
-        return null;  // Return null if no match
-    }
 }
 
