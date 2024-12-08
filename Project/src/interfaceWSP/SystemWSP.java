@@ -99,7 +99,6 @@ public class SystemWSP {
 		}
 	}
 	
-<<<<<<< HEAD
 	//Sign up
 	void signUp() {
 		System.out.println("Please, fill this form:\n\nChoose who are you?\n    1.Teacher\n    2.Student\n    3.Manager\n    4.Finance Manager\n    5.Admin");
@@ -121,12 +120,7 @@ public class SystemWSP {
 		} catch (InputMismatchException e) {
 		    System.out.println("Invalid input! Please enter a number (1, 2, 3 or 4).");
 		}
-=======
-	//Sign in
-	void signIn() {
 		
->>>>>>> branch 'main' of https://github.com/sportacus1212/ProjectOOP.git
-	}
 	
 	//If forget Password
 	void forgetPassword() {
