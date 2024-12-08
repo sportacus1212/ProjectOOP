@@ -1,7 +1,7 @@
 # 🌟 Welcome to Our WSP System Project! 🌟  
 
 ### 🤝 Meet Our Dream Team:  
-- **Nurzhas** – Our visionary planner and problem-solver!  
+- **Nurzhas** – Our visionary planner and team leader!  
 - **Kanysh** – The coding wizard who brings ideas to life.  
 - **Sagynysh** – A mastermind of design and innovation.  
 - **Akezhan** – The ultimate debugger and quality assurer.  
