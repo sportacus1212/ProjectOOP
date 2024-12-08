@@ -8,13 +8,20 @@ public abstract class Employee extends User {
     private int workHours; // Work hours per week
     private School school; // School (enums)
 
-    public Employee(String id, String name, String surname, String login, String password, Role role, int yearOfJoining, int salary, int workHours, School school) {
-        super(id, name, surname, login, password, role, yearOfJoining);
-        this.salary = salary;
-        this.workHours = workHours;
-        this.school = school;
+    public Employee(String name, String surname, String password, int yoj, Role role, School school) {
+    	super(name, surname, password, role, yoj);
+    	this.school = school;
     }
-
+    
+    public Employee(String name, String surname, String password, Role role, int yoj) {
+    	super(name, surname, password, role, yoj);
+    }
+    
+    public Employee(String log, String pass, String id) {
+    	super(log, pass, id);
+    }    
+    
+    
     // Calculate bonus based on work hours and salary
     public int calculateBonus() {
         // Example: Bonus is 10% of monthly salary if work hours exceed 40

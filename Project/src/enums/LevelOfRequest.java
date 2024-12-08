@@ -1,7 +1,7 @@
 package enums;
 
 public enum LevelOfRequest {
-	LOW,
-	MEDIUM,
-	HIGH
+	ADD_URSER,
+	DEL_USER,
+	UPDATE_USER
 }

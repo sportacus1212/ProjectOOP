@@ -25,5 +25,10 @@ public class Student extends User {
         super.displayInfo();  // Call the displayInfo from User
         System.out.println("Major: " + major);
     }
+
+	public char[] getDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

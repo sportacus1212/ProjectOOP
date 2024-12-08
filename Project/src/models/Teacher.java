@@ -1,20 +1,33 @@
 package models;
 
+import DBPakage.Request;
+import enums.LevelOfRequest;
 import enums.Role;
 import enums.School;
 import enums.Status;
+import enums.Subjects;
 
 public class Teacher extends Employee {
     private Status status; // Status of the teacher (enum, e.g., PROFESSOR, LECTURER)
-    private String subject; // Subject taught by the teacher
+    private Subjects subject; // Subject taught by the teacher
     private static double rating; // Static field for overall teacher rating
 
-    public Teacher(String id, String name, String surname, String login, String password, int yearOfJoining, int salary, int workHours, School school, Status status, String subject) {
-        super(id, name, surname, login, password, Role.TEACHER, yearOfJoining, salary, workHours, school);
-        this.status = status;
-        this.subject = subject;
+    public Teacher(String name, String surname, String password, Role role, int yoj, School school, Status status, Subjects subject) {
+    	super(name, surname, password, yoj, role, school);
+    	this.status = status;
+    	this.subject = subject;
+    	
     }
-
+    
+    
+    //Sending verification to Admin to create Account;
+    public void sendRequestADD(Admin a) {
+    	Request<Teacher> createAcc = new Request<Teacher>("Please Approve my account!!!", LevelOfRequest.ADD_URSER, this);
+    	createAcc.sendRequest(a);
+    }
+    
+    
+    
     // View information about the course
     public void viewCourse(Course course) {
         System.out.println("Course Information:");
@@ -29,7 +42,7 @@ public class Teacher extends Employee {
     // View students in a course
     public void viewStudents(Student student) {
         System.out.println("Viewing student details:");
-        System.out.println(student.getDetails());
+        //System.out.println(student.getDetails());
     }
 
     // Assign marks to a student for a course
@@ -53,23 +66,13 @@ public class Teacher extends Employee {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
-    public String getSubject() {
+    public Subjects getSubject() {
         return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public static double getRating() {
         return rating;
     }
 
-    public static void setRating(double rating) {
-        Teacher.rating = rating;
-    }
 }
