@@ -16,7 +16,7 @@ public class StudentsFinanceManager extends FinanceManager {
         super(name, surname, password, yearOfJoining, role, type); // Call to the parent class constructor
         this.studentsList = studentsList; // Initialize the unique field
     }
-//third push
+//constructor to students finance manager
     // Additional operations specific to managing student finances can go here
 
     @Override
