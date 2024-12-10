@@ -9,7 +9,7 @@ public class StudentsFinanceManager extends FinanceManager {
         super(id, name, surname, login, password, yearOfJoining, salary, workHours, School.FIT, bankBalance);
         this.studentsList = studentsList;
     }
-
+//bbbboubib
     // Additional operations specific to managing student finances can go here
 
     @Override
