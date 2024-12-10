@@ -1,8 +1,10 @@
 package models;
 
+import java.io.Serializable;
+
 import enums.Role;
 
-public abstract class User {
+public abstract class User implements Serializable{
     private String id;
     private String name;
     private String surname;

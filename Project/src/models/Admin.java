@@ -3,6 +3,7 @@ package models;
 import enums.LevelOfRequest;
 import enums.Role;
 import enums.School;
+import interfaceWSP.AdminView;
 import interfaceWSP.SystemWSP;
 
 import java.util.ArrayDeque;
@@ -19,10 +20,9 @@ import DBPakage.Serializer;
 
 public class Admin extends Employee {
     private List<User> managedUsers; // List of managed users
-    private String logFilePath; // Path to log file
+    private static String logFilePath = "C:\\Users\\Hush\\git\\ProjectOOP\\Project\\src\\DBPakage\\databaseOOP"; // Path to log file
     private Queue<Request<?>> requests = new ArrayDeque<>(); //List of Requests
-    private Database db;
-    private SystemWSP wsp;
+    private Database db = new Database();
    
 
     
@@ -54,9 +54,11 @@ public class Admin extends Employee {
     		//Reading request
     		if(read == 1) {
 		    	Request<T> request = (Request<T>) requests.poll();
-		    	request.toString();
+		    	System.out.println(request.toString());
+		    	
 		    	//ADD_USER OPTION
 		    	if(request.getLevel().equals(LevelOfRequest.ADD_URSER)) {
+		    		request.toString();
 		    		System.out.println("Do you want add this user to Database?\n    1.Yes\n    2.No\n    3.Decide leter");
 		    		int decision = input.nextInt();
 		    		input.nextLine(); 
@@ -104,23 +106,23 @@ public class Admin extends Employee {
 		    	        System.err.println("Log file path is not set. Cannot serialize managedUsers.");
 		    	    }
 		    	    
-		    	    wsp.openAdminMainPage(this);
+		    	    AdminView.welcomePage(this);
 		    		
 		    	}
 		    	
 		    //Go to back
     		} else if(read == 2) {
-    			wsp.openAdminMainPage(this);
+    			AdminView.welcomePage(this);
     		} else {
     			System.out.println("Please enter 1 or 2");
-    			wsp.openAdminMainPage(this);
+    			AdminView.welcomePage(this);
     		}
     		
     	} catch (InputMismatchException e) {
 		    System.out.println("Invalid input! Please enter a number accepted.");
 		}
     	
-    	wsp.openAdminMainPage(this);
+    	AdminView.welcomePage(this);
     }
     
     

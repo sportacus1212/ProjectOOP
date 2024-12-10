@@ -6,6 +6,7 @@ import java.util.List;
 import enums.Role;
 import enums.Subjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import models.Admin;
 import models.Course;
@@ -17,7 +18,7 @@ import models.Student;
 //import models.StudentsFinanceManager;
 import models.User;
 
-public class Database {
+public class Database implements Serializable{
     // Lists to hold the different types of users
     private List<User> users = new ArrayList<>();
     public List<Student> students = new ArrayList<>();

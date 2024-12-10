@@ -34,7 +34,7 @@ public class Request<T> {
 			Thread.sleep(1000);
 			System.out.println(". ");
 			Thread.sleep(1000);
-			System.out.print("Massage successfully sended!!!");
+			System.out.println("Massage successfully sended!!!\n\n");
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class Request<T> {
 
 	@Override
 	public String toString() {
-		return "Request [comment=" + comment + ", signed=" + signed + ", level=" + level + ", obj=" + obj + "]";
+		return "Form " + obj.toString() + "\n" + comment + "\nLevel of request is " + level;
 	}
 
 	

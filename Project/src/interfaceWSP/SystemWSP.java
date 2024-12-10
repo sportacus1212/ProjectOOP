@@ -1,5 +1,6 @@
 package interfaceWSP;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -16,16 +17,17 @@ import models.Student;
 import models.Teacher;
 import models.User;
 
-public class SystemWSP {
-	Database database = new Database(); 
+public class SystemWSP implements Serializable{
+	static Database database = new Database(); 
 	
 	public SystemWSP() {
+		
 	}
 	
 
 
 	//This is welcome page it will be first page which will shown to the user
-	void welcome() {
+	public static void welcome() {
 		database.addDefaultAdmin();
 		try (Scanner input = new Scanner(System.in)) {
 			System.out.println("Welcome to WSP. Log in/Sing in please!!!\nPlease, choose one of this:\n    1.Log in\n    2.Sign up\n    3.Forget the password\n    4.Exit");
@@ -55,7 +57,7 @@ public class SystemWSP {
 	
 	//Functions in welcome page
 	//Log in
-	void logIn() {
+	static void logIn() {
 		try (Scanner input = new Scanner(System.in)) {
 			//Entering user name
 			System.out.println("Enter your login: ");
@@ -80,12 +82,12 @@ public class SystemWSP {
 								
 								char roleChar = user.getId().charAt(2);
 								switch (roleChar) {
-				                    case 'B': openStudentMainPage((Student) user); break;
-				                    case 'T': openTeacherMainPage((Teacher) user); break;
-				                    case 'A': openAdminMainPage((Admin) user); break;
-				                    case 'm': openAdminMainPage((Admin) user); break;
-				                    case 'M': openManagerMainPage((Manager) user); break;
-				                    case 'F': openFinanceManagerMainPage((FinanceManager) user); break;
+				                    case 'B': StudentView.welcomePage((Student) user); break;
+				                    case 'T': TeacherView.welcomePage((Teacher) user); break;
+				                    case 'A': AdminView.welcomePage((Admin) user); break;
+				                    case 'm': AdminView.welcomePage((Admin) user); break;
+				                    case 'M': ManagerView.welcomePage((Manager) user); break;
+				                    case 'F': FinanceManager.welcomePage((FinanceManager) user); break;
 				                    default: System.out.println("Unknown role."); break;
 								}
 								break;
@@ -122,7 +124,7 @@ public class SystemWSP {
 	}
 	
 	//Sign up
-	void signUp() {
+	static void signUp() {
 		System.out.println("Please, fill this form:\n\nChoose who are you?\n    1.Teacher\n    2.Student\n    3.Manager\n    4.Finance Manager\n    5.Admin");
 		try (Scanner input = new Scanner(System.in)) {
 			int role = input.nextInt();
@@ -264,58 +266,18 @@ public class SystemWSP {
 		
 	
 	//If forget Password
-	void forgetPassword() {
+	static void forgetPassword() {
 		
 	}
 	
 	//Exit 
-	void exit() {
+	static void exit() {
 		welcome();
 	}
 	
 	
 //----------------------------------------------------------------------------------------------------------------
 	
-	
-	//Interfaces 
-	//For Student
-	void openStudentMainPage(Student student) {
-	
-	}
-	
-	//For Teacher
-	void openTeacherMainPage(Teacher teacher) {
-		
-	}
-	
-	//For Admin
-	public void openAdminMainPage(Admin admin) {
-		System.out.println("Choose you action:\n    1.Read Requests\n    2.Exit");
-		try (Scanner input = new Scanner(System.in)) {
-			int action = input.nextInt();
-			input.nextLine();
-			
-			if(action == 1) {
-				admin.readRequest();
-			} else if(action == 2) {
-				exit();
-			}
-			
-			
-		} catch (InputMismatchException e) {
-		    System.out.println("Invalid input! Please enter a correct number.");
-		}
-	}
-	
-	//For Manager
-	void openManagerMainPage(Manager manager) {
-		
-	}
-	
-	//For Finance Manager
-	void openFinanceManagerMainPage(FinanceManager FManager) {
-		
-	}
 	
 	
 }

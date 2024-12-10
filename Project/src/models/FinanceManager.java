@@ -63,5 +63,10 @@ public class FinanceManager extends Employee {
     public void displayFunc() {
         System.out.println("Finance Manager functionalities: Manage salaries, scholarships, and fees.");
     }
+
+	public static void welcomePage(FinanceManager user) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

@@ -12,9 +12,7 @@ import models.Teacher;
 public class Main {
 
 	public static void main(String[] args) {
-		SystemWSP system = new SystemWSP();
-		
-		system.welcome();
+		SystemWSP.welcome();
 //		
 //	    Admin admin = new Admin("admin", "admin", "admin");
 //	    Teacher teacher = new Teacher("John", "Doe", "password", Role.TEACHER, 2023, School.FIT, Status.LECTOR, Subjects.OOP);
