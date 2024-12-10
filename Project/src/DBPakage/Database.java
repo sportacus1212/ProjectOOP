@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import models.Admin;
 import models.Course;
+import models.FinanceManager;
 //import models.Employee;
 //import models.FinanceManager;
 import models.Manager;
@@ -24,6 +25,7 @@ public class Database implements Serializable{
     public List<Student> students = new ArrayList<>();
     private List<Admin> admins = new ArrayList<>();
     private List<Manager> managers = new ArrayList<>();
+    private List<FinanceManager> fmanagers = new ArrayList<>();
     private List<Teacher> teachers = new ArrayList<>();
     private List<Course> courses = new ArrayList<>();
 
@@ -69,6 +71,10 @@ public class Database implements Serializable{
     public List<Subjects> getSubjects() {
         return subjects;
     }
+
+	public List<FinanceManager> getFinanceManager() {
+		return fmanagers;
+	}
 
 }
 

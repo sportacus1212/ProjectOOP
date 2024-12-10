@@ -33,36 +33,6 @@ public abstract class User implements Serializable{
     	this.id = id;
     }
 
-    // Generate unique ID (for simplicity, using a random number here)
-    public String generateUniqueID() {
-        return "UID-" + (int) (Math.random() * 10000);
-    }
-
-    // Log in the user
-    public boolean login(String inputPassword) {
-        if (this.password.equals(inputPassword)) {
-            this.isLogged = true;
-            System.out.println(name + " logged in successfully.");
-            return true;
-        }
-        System.out.println("Incorrect password. Login failed.");
-        return false;
-    }
-
-    // Display user-specific functionality (abstract)
-    public abstract void displayFunc();
-
-    // Change the password
-    public void changePassword(String newPassword) {
-        this.password = newPassword;
-        System.out.println("Password changed successfully.");
-    }
-    
-    // Simulate forgetting a password
-    public void forgetPassword() {
-        System.out.println("Reset link sent to the registered email for " + name);
-    }
-    
     
     //Creation of Id
     public void createId() {

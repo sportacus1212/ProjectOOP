@@ -48,9 +48,7 @@ public abstract class Employee extends User {
     }
 
     // Abstract method to ensure subclasses implement their specific functionality
-    @Override
-    public abstract void displayFunc();
-
+    
     // Getters and Setters
     public int getSalary() {
         return salary;

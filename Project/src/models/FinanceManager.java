@@ -1,5 +1,6 @@
 package models;
 
+import enums.ManagerType;
 import enums.Role;
 import enums.School;
 
@@ -8,14 +9,19 @@ import java.util.List;
 
 public class FinanceManager extends Employee {
     private float bankBalance; // The total balance of the finance office
+    private ManagerType type;
     private Map<Student, Boolean> studentFeePaid; // Map tracking whether students have paid their fees
     private Map<Employee, Integer> salaryMap; // Map tracking the salaries of employees
 
-    public FinanceManager(String id, String name, String surname, String login, String password, int yearOfJoining, int salary, int workHours, School school, float bankBalance) {
-        super(id, name, surname, login, password, Role.MANAGER, yearOfJoining, salary, workHours, school);
-        this.bankBalance = bankBalance;
+  
+    public FinanceManager(String name, String surname, String password, int yoj, Role role, ManagerType type) {
+    	super(name, surname, password, role, yoj);
+    	this.type = type;
     }
-
+    
+    
+    
+    
     // Block students who have not paid fees
     public boolean blockingStudents(Student student) {
         if (studentFeePaid.containsKey(student) && !studentFeePaid.get(student)) {
@@ -57,11 +63,6 @@ public class FinanceManager extends Employee {
 
     public float getBankBalance() {
         return bankBalance;
-    }
-
-    @Override
-    public void displayFunc() {
-        System.out.println("Finance Manager functionalities: Manage salaries, scholarships, and fees.");
     }
 
 	public static void welcomePage(FinanceManager user) {

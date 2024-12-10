@@ -55,12 +55,6 @@ public class Teacher extends Employee {
         System.out.println("Message sent to " + employee.getName() + ": " + message);
     }
 
-    // Display teacher-specific functionalities
-    @Override
-    public void displayFunc() {
-        System.out.println("Teacher functionalities: Manage courses, put marks, view students, etc.");
-    }
-
     // Getters and setters
     public Status getStatus() {
         return status;
