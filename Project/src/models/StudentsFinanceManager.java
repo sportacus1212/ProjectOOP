@@ -1,20 +1,24 @@
 package models;
 
 import java.util.List;
+import enums.ManagerType;
+import enums.Role;
 
 public class StudentsFinanceManager extends FinanceManager {
-    private List<Student> studentsList; // List of students managed by this class
+    private List<Student> studentsList; 
 
-    public StudentsFinanceManager(String id, String name, String surname, String login, String password, int yearOfJoining, int salary, int workHours, float bankBalance, List<Student> studentsList) {
-        super(id, name, surname, login, password, yearOfJoining, salary, workHours, School.FIT, bankBalance);
-        this.studentsList = studentsList;
+    public StudentsFinanceManager(String name,String surname, String password, int yearOfJoining, Role role, ManagerType type, float bankBalance, List<Student> studentsList) {
+        super(name, surname, password, yearOfJoining, role, type); 
+        this.studentsList = studentsList; 
+        this.setBankBalance(bankBalance);
     }
 
-    // Additional operations specific to managing student finances can go here
+    // needed operations
 
     @Override
     public void displayFunc() {
         System.out.println("Students Finance Manager functionalities: Manage student fees and scholarships.");
     }
 }
+
 
