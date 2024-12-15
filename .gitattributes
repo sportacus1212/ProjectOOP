@@ -1,0 +1,7 @@
+* text=auto
+*.xml text eol=lf
+*.html text eol=lf
+*.properties text eol=lf
+*.ini text eol=lf
+*.inf text eol=lf
+*.mappings text eol=lf
